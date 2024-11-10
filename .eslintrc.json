@@ -1,0 +1,35 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-var": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-unsafe-optional-chaining": [
+      "error",
+      { "disallowArithmeticOperators": true }
+    ],
+    "no-empty-function": ["error", { "allow": ["arrowFunctions"] }],
+    "no-magic-numbers": [
+      "error",
+      {
+        "ignore": [0, 1],
+        "ignoreArrayIndexes": true,
+        "ignoreDefaultValues": true,
+        "ignoreClassFieldInitialValues": true
+      }
+    ],
+    "max-params": ["warn", 3],
+    "no-unreachable": "error",
+    "no-unused-vars": "off",
+    "@next/next/no-img-element": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ]
+  }
+}
