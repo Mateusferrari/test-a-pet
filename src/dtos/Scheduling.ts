@@ -1,6 +1,6 @@
 // Types
-import { Pet } from "./Pet";
-import { Veterinary } from "./Veterinary";
+import { Pet, Veterinary } from "."
+
 
 export interface Scheduling {
   id: string
