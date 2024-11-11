@@ -19,6 +19,10 @@ export const TableHeader: React.FC = (
 
         <HeaderField value='Nome' />
 
+        <HeaderField value='Espécie' />
+        
+        <HeaderField value='Raça' />
+
         <HeaderField value='Data de nascimento' />
 
         <HeaderField value='Proprietário'/>

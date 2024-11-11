@@ -11,23 +11,22 @@ import { TableHeader } from './components/TableHeader'
 // Styles
 import { Container, TableBody } from './styles'
 
-
-export const Table: React.FC = (
-
-) => {
+export const Table: React.FC = () => {
   // Hooks
-  const {data} = useScheduling({})
+  const { data } = useScheduling({})
 
   // Functions
-  function renderRows(){
-    data.map(scheduling => <Row key={scheduling.id}/>)
+  function renderRows() {
+    return data.map(scheduling => (
+      <Row key={scheduling.id} scheduling={scheduling} />
+    ))
   }
 
   return (
     <Container>
-      <TableHeader/>
+      <TableHeader />
 
-      <TableBody></TableBody>
+      <TableBody>{renderRows()}</TableBody>
     </Container>
   )
 }
