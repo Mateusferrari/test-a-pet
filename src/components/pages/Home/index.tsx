@@ -6,7 +6,7 @@ import { Head } from '@components/structure/Head'
 import { Navigation } from '@components/structure/Navigation'
 
 // Styles
-import { Container, PageContent } from './styles'
+import { Banner, BannerImage, Container, PageContent } from './styles'
 
 export const Home: React.FC = () => {
   return (
@@ -14,7 +14,12 @@ export const Home: React.FC = () => {
       <Head title="Home" image='/favicon/dog.svg' />
       <Navigation />
 
-      <PageContent></PageContent>
+      <PageContent>
+        <div></div>
+        <Banner>
+          <BannerImage src='/banner/bannerCat.png'/>
+        </Banner>
+      </PageContent>
     </Container>
   )
 }
