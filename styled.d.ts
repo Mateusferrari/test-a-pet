@@ -30,7 +30,13 @@ declare module 'styled-components' {
     black: string
     hover: string
     borders: {
-      gray: string
+      default: string
+
+    }
+    pink_pallete: {
+      light: string
+      medium: string
+      dark: string
     }
   }
 }
