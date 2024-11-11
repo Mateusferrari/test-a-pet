@@ -1,22 +1,28 @@
 // External Libraries
 import React from 'react'
 
+// Hooks
+import { useScheduling } from './hooks/useScheduling'
+
 // Components
+import { Row } from './components/Row'
 import { TableHeader } from './components/TableHeader'
 
 // Styles
 import { Container, TableBody } from './styles'
 
 
-interface Props {
-  // Props
-}
+export const Table: React.FC = (
 
-export const Table: React.FC<Props> = (
-  {
-    /* Props */
-  }
 ) => {
+  // Hooks
+  const {data} = useScheduling({})
+
+  // Functions
+  function renderRows(){
+    data.map(scheduling => <Row key={scheduling.id}/>)
+  }
+
   return (
     <Container>
       <TableHeader/>
