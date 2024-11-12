@@ -4,6 +4,9 @@ import React from 'react'
 // Components
 import { RowField } from './RowField'
 
+// Utils
+import { formatDate, formatPhoneNumber, formatVeterinaryName } from '../../utils'
+
 // Types
 import { Scheduling } from 'src/dtos'
 
@@ -17,7 +20,9 @@ interface Props {
 export const Row: React.FC<Props> = ({ scheduling }) => {
   return (
     <Container>
-      <RowField value={scheduling?.date} />
+      <RowField
+        value={formatDate(new Date(scheduling?.date.concat('T03:00:00.000Z')))}
+      />
 
       <RowField value={scheduling?.hour} />
 
@@ -27,13 +32,17 @@ export const Row: React.FC<Props> = ({ scheduling }) => {
 
       <RowField value={scheduling?.pet?.breed} />
 
-      <RowField value={scheduling?.pet?.dateOfBirth} />
+      <RowField
+        value={formatDate(
+          new Date(scheduling?.pet?.dateOfBirth.concat('T03:00:00.000Z'))
+        )}
+      />
 
       <RowField value={scheduling?.pet?.owner?.name} />
 
-      <RowField value={scheduling?.pet?.owner?.tel} />
+      <RowField value={formatPhoneNumber(scheduling?.pet?.owner?.tel)} />
 
-      <RowField value={scheduling?.veterinary?.name} />
+      <RowField value={formatVeterinaryName(scheduling?.veterinary?.name)} />
     </Container>
   )
 }

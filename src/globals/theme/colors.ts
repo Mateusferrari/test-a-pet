@@ -16,6 +16,7 @@ export const THEME_COLORS: ColorsWildcards = {
   pink_pallete: {
     light: "#e8a6b3",
     medium: "#f7b2ce",
-    dark: "#D90368"
+    dark: "#D90368",
+    coral: "#f7a399"
   }
 }

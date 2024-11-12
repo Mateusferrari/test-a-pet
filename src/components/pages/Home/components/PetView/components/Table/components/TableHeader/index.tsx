@@ -7,29 +7,27 @@ import { HeaderField } from './components/HeaderField'
 // Styles
 import { Container, HeaderRow } from './styles'
 
-export const TableHeader: React.FC = (
-
-) => {
+export const TableHeader: React.FC = () => {
   return (
     <Container>
       <HeaderRow>
-        <HeaderField value='Data da consulta' />
+        <HeaderField value="Data" />
 
-        <HeaderField value='Hora da Consulta' />
+        <HeaderField value="Horário" />
 
-        <HeaderField value='Nome' />
+        <HeaderField value="Nome" />
 
-        <HeaderField value='Espécie' />
-        
-        <HeaderField value='Raça' />
+        <HeaderField value="Espécie" />
 
-        <HeaderField value='Data de nascimento' />
+        <HeaderField value="Raça" />
 
-        <HeaderField value='Proprietário'/>
+        <HeaderField value="Nascimento" />
 
-        <HeaderField value='Telefone de contato' />
+        <HeaderField value="Proprietário" />
 
-        <HeaderField value='Veterinário' />
+        <HeaderField value="Contato" />
+
+        <HeaderField value="Veterinário" />
       </HeaderRow>
     </Container>
   )

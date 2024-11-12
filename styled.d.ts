@@ -37,6 +37,7 @@ declare module 'styled-components' {
       light: string
       medium: string
       dark: string
+      coral: string
     }
   }
 }
