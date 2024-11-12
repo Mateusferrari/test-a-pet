@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const PageContent = styled.div`
   width: 100%;
 
-  padding: 2rem;
+  padding-inline-start: 2rem;
 
   display: grid;
   grid-template-columns: 1fr 20rem;
