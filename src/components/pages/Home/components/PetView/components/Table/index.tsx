@@ -10,15 +10,20 @@ import { TableHeader } from './components/TableHeader'
 
 // Styles
 import { Container, TableBody } from './styles'
+import { Scheduling } from 'src/dtos'
 
-export const Table: React.FC = () => {
+interface Props {
+  onRowClick: (schedule?: Scheduling) => void
+}
+
+export const Table: React.FC<Props> = ({onRowClick}) => {
   // Hooks
   const { data } = useScheduling({})
 
   // Functions
   function renderRows() {
     return data.map(scheduling => (
-      <Row key={scheduling.id} scheduling={scheduling} />
+      <Row key={scheduling.id} scheduling={scheduling} onClick={onRowClick}/>
     ))
   }
 

@@ -15,11 +15,12 @@ import { Container } from './styles'
 
 interface Props {
   scheduling: Scheduling
+  onClick: (schedule?: Scheduling) => void
 }
 
-export const Row: React.FC<Props> = ({ scheduling }) => {
+export const Row: React.FC<Props> = ({ scheduling, onClick }) => {
   return (
-    <Container>
+    <Container onClick={() => onClick(scheduling)}>
       <RowField
         value={formatDate(new Date(scheduling?.date.concat('T03:00:00.000Z')))}
       />

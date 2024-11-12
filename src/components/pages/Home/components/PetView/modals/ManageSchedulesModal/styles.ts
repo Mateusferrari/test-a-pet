@@ -16,7 +16,7 @@ overflow-y: auto;
 
 row-gap: 1.5rem;
 padding: 1.5rem;
-z-index: ${({ theme }) => theme.zIndex.modal};
+z-index: 10;
 
 background-color: ${({ theme }) => theme.colors.pink_pallete.light};
 border-left: 1px solid ${({ theme }) => theme.colors.pink_pallete.dark};
@@ -35,8 +35,8 @@ export const Backdrop = styled(motion.div)`
   backdrop-filter: blur(1.5px);
   -webkit-backdrop-filter: blur(1.5px);
 
-  background-color: rgba(255, 182, 193, 0.2); 
-  z-index: ${({ theme }) => theme.zIndex.modal - 1};
+  background-color: rgba(255, 182, 193, 0.2);
+  z-index: 9;
 `;
 
 export const Form = styled.form`

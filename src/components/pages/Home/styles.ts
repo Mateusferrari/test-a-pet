@@ -9,6 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
+  overflow: hidden;
   row-gap: 2rem;
 `
 
@@ -18,19 +19,21 @@ export const PageContent = styled.div`
   padding-inline-start: 2rem;
 
   display: grid;
-  grid-template-columns: 1fr 20rem;
 
   row-gap: 2rem;
 
 
+
   ${defaultAnchors({
-  gridTemplateColumns: ['1fr', '1fr', '1fr', '1fr', '1fr', '1fr 50rem;']
+  gridTemplateColumns: ['1fr', '1fr', '1fr', '1fr', '1fr', '1fr 45rem;']
 })}
 `
 
 export const Banner = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 5.7rem);
+
+  overflow: hidden;
 
   border-radius: 2rem;
 
