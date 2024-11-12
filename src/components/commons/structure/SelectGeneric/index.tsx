@@ -35,7 +35,7 @@ export const SelectGeneric: React.FC<Props> = ({
         options={type === 'specie' ? SPECIES_OPTIONS : VET_OPTIONS}
         value={value}
         onChange={onChange}
-        placeholder="Selecione a espécie"
+        placeholder={type === 'specie' ? "Selecione a espécie" : 'Selecione o veterinário'}
         isClearable
         isDisabled={disabled}
         styles={{
@@ -45,7 +45,7 @@ export const SelectGeneric: React.FC<Props> = ({
             borderRadius: '8px',
             padding: '4px',
             boxShadow: state.isFocused ? '0 0 0 1px #4CAF50' : 'none',
-            backgroundColor: disabled ? '#f0f0f0' : 'white', 
+            backgroundColor: disabled ? '#f0f0f0' : 'white',
           }),
           option: (provided, state) => ({
             ...provided,

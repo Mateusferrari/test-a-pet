@@ -93,7 +93,7 @@ export const ManageSchedulesModal = React.forwardRef<
                 type="text"
                 value={formFields.breed}
                 errorMessage={errors.breed}
-                placeholder="Digite o nome do pet aqui"
+                placeholder="Digite a raça do pet aqui"
                 onChange={v => handleFieldChange({ breed: v })}
               />
 
@@ -112,17 +112,17 @@ export const ManageSchedulesModal = React.forwardRef<
                 required
                 disabled={isEditing}
                 title="Nome do Proprietário"
-                type="date"
+                type="text"
                 value={formFields.owner}
                 errorMessage={errors.owner}
-                placeholder="Insira a data de nascimento"
+                placeholder="Insira o nome do proprietário"
                 onChange={v => handleFieldChange({ owner: v })}
               />
 
               <Input
                 required
                 title="Telefone do Proprietário"
-                type="date"
+                type="tel"
                 value={formFields.tel}
                 errorMessage={errors.tel}
                 placeholder="Insira o telefone de contato"
@@ -134,7 +134,7 @@ export const ManageSchedulesModal = React.forwardRef<
                 type="vet"
                 onChange={v => handleFieldChange({ vet: v as Option })}
                 value={formFields.vet}
-                title={''}
+                title={'Veterinário'}
                 errorMessage={errors.vet}
               />
 
