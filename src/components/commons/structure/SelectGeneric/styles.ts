@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Label = styled.label`
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-bottom: 8px;
   display: block;
 `;

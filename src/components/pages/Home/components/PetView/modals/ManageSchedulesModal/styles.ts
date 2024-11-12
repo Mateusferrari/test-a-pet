@@ -2,24 +2,24 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const Container = styled(motion.div)`
-width: 35rem;
+  width: 43rem;
 
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-position: fixed;
-top: 0;
-bottom: 0;
-right: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
 
-overflow-y: auto;
+  overflow-y: auto;
 
-row-gap: 1.5rem;
-padding: 1.5rem;
-z-index: 10;
+  row-gap: 1.5rem;
+  padding: 1.5rem;
+  z-index: 10;
 
-background-color: ${({ theme }) => theme.colors.pink_pallete.light};
-border-left: 1px solid ${({ theme }) => theme.colors.pink_pallete.dark};
+  background-color: #fff0f3;
+  border-left: 1px solid ${({ theme }) => theme.colors.pink_pallete.dark};
 `
 
 export const Backdrop = styled(motion.div)`
