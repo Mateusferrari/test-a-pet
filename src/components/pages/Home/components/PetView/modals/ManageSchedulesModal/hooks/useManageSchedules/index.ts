@@ -46,7 +46,7 @@ export function useManageSchedules({ }: UseManageSchedulesParams) {
     setFormFields(makeInitialFields)
   }
 
-  function handleFieldChange(updated: Partial<FormFields>) {
+  function handleFieldChange(updated: Partial<FormFields> ) {
     for (const key in updated) {
       if (key in errors) setErrors(prev => ({ ...prev, [key]: '' }))
     }

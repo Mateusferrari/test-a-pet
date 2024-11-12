@@ -3,6 +3,10 @@ import React, { useImperativeHandle } from 'react'
 import { AnimatePresence } from 'framer-motion'
 
 // Components
+import { Input } from '@components/structure/Input'
+import { SelectGeneric } from '@components/structure/SelectGeneric'
+import { Option } from '@components/structure/SelectGeneric/types'
+import { Button } from '@components/buttons/Button'
 
 // Hooks
 import { useManageSchedules } from './hooks/useManageSchedules'
@@ -13,10 +17,6 @@ import { ManageSchedulesModalProps, ManageSchedulesModalMethods } from './types'
 
 // Styles
 import { Backdrop, ButtonsContainer, Container, Form } from './styles'
-import { Input } from '@components/structure/Input'
-import { SelectGeneric } from '@components/structure/SelectGeneric'
-import { Option } from '@components/structure/SelectGeneric/types'
-import { Button } from '@components/buttons/Button'
 
 export const ManageSchedulesModal = React.forwardRef<
   ManageSchedulesModalMethods,
@@ -68,6 +68,7 @@ export const ManageSchedulesModal = React.forwardRef<
 
               <Input
                 required
+                disabled={isEditing}
                 title="Nome do pet"
                 type="text"
                 value={formFields.name}
@@ -77,17 +78,17 @@ export const ManageSchedulesModal = React.forwardRef<
               />
 
               <SelectGeneric
+                disabled={isEditing}
                 type="specie"
-                onChange={function (selectedOption: Option | null): void {
-                  throw new Error('Function not implemented.')
-                }}
+                onChange={v => handleFieldChange({ specie: v as Option })}
                 value={formFields.specie}
-                title={''}
+                title={'Espécie do pet'}
                 errorMessage={errors.specie}
               />
 
               <Input
                 required
+                disabled={isEditing}
                 title="Raça do pet"
                 type="text"
                 value={formFields.breed}
@@ -98,6 +99,7 @@ export const ManageSchedulesModal = React.forwardRef<
 
               <Input
                 required
+                disabled={isEditing}
                 title="Data de nascimento"
                 type="date"
                 value={formFields.birth}
@@ -108,6 +110,7 @@ export const ManageSchedulesModal = React.forwardRef<
 
               <Input
                 required
+                disabled={isEditing}
                 title="Nome do Proprietário"
                 type="date"
                 value={formFields.owner}
@@ -127,10 +130,9 @@ export const ManageSchedulesModal = React.forwardRef<
               />
 
               <SelectGeneric
+                disabled={isEditing}
                 type="vet"
-                onChange={function (selectedOption: Option | null): void {
-                  throw new Error('Function not implemented.')
-                }}
+                onChange={v => handleFieldChange({ vet: v as Option })}
                 value={formFields.vet}
                 title={''}
                 errorMessage={errors.vet}
@@ -148,7 +150,7 @@ export const ManageSchedulesModal = React.forwardRef<
                   type="submit"
                   variant="filled"
                   loading={loading}
-                  label={isEditing? 'Editar': 'Adicionar'}
+                  label={isEditing ? 'Editar' : 'Adicionar'}
                 />
               </ButtonsContainer>
             </Form>

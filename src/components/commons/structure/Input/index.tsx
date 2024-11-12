@@ -1,17 +1,15 @@
-// External Libraries
-import React from 'react'
-
-// Styles
-import { Asterisk, Container, ErrorText, Label, StyledInput } from './styles'
+import React from 'react';
+import { Asterisk, Container, ErrorText, Label, StyledInput } from './styles';
 
 interface Props {
-  title: string
-  value: string
-  required?: boolean
-  type?: string
-  errorMessage?: string
-  placeholder?: string
-  onChange: (value: string) => void
+  title: string;
+  value: string;
+  required?: boolean;
+  type?: string;
+  errorMessage?: string;
+  placeholder?: string;
+  onChange: (value: string) => void;
+  disabled?: boolean;
 }
 
 export const Input: React.FC<Props> = ({
@@ -21,7 +19,8 @@ export const Input: React.FC<Props> = ({
   value,
   errorMessage,
   placeholder,
-  onChange
+  onChange,
+  disabled = false, 
 }) => {
   return (
     <Container>
@@ -38,7 +37,8 @@ export const Input: React.FC<Props> = ({
         onChange={e => onChange(e.target.value)}
         hasError={!!errorMessage}
         aria-invalid={!!errorMessage}
+        disabled={disabled}
       />
     </Container>
-  )
-}
+  );
+};

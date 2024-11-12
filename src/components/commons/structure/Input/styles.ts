@@ -27,6 +27,7 @@ export const ErrorText = styled.span`
 
 interface StyledInputProps {
   hasError: boolean;
+  disabled: boolean;
 }
 
 export const StyledInput = styled.input<StyledInputProps>`
@@ -35,6 +36,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
+  background-color: ${({ disabled }) => (disabled ? '#f0f0f0' : 'white')};
 
 
   ${({ hasError }) =>
@@ -44,6 +46,15 @@ export const StyledInput = styled.input<StyledInputProps>`
     `}
 
   &:focus {
-    border-color: ${({ hasError }) => (hasError ? '#ff5e5e' : '#4CAF50')};
+    border-color: ${({ hasError, disabled }) =>
+      disabled ? '#ccc' : hasError ? '#ff5e5e' : '#4CAF50'};
   }
+
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      cursor: not-allowed;
+      opacity: 0.6;
+    `}
 `;
