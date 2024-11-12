@@ -19,7 +19,7 @@ export const Icon: React.FC<Props> = ({
   onClick
 }) => {
   return (
-    <Container size={size} onClick={onClick}>
+    <Container $size={size} onClick={onClick}>
       <Image fill alt={alt} src={src} sizes={size} draggable={false} />
     </Container>
   )

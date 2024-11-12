@@ -1,4 +1,4 @@
-import { TypeVariants } from '@components/toolkit/Typography/types'
+
 
 export interface ButtonProps extends ButtonStyleProps, ButtonTextProps {
   loading?: boolean
@@ -12,7 +12,6 @@ export interface ButtonTextProps {
   label: string
 
   labelColor?: string
-  labelVariant?: keyof TypeVariants
 
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode

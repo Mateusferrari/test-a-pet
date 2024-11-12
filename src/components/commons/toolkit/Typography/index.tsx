@@ -29,7 +29,7 @@ export const Typography: React.FC<Props> = ({
       {isLoading ? (
         <Loader width='5rem' height='2rem' />
       ) : (
-        <Container as={as} size={size} color={color} weight={weight}>
+        <Container as={as} $size={size} $color={color} $weight={weight}>
           {children}
         </Container>
       )}

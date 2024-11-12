@@ -28,8 +28,7 @@ export const ButtonContent: React.FC<Props> = ({
   variant,
   endIcon,
   startIcon,
-  labelColor,
-  labelVariant = 'b2'
+  labelColor
 }) => {
   // Constants
   const textColor = labelColor || LABEL_COLOR_MAPPER[variant]
@@ -40,9 +39,6 @@ export const ButtonContent: React.FC<Props> = ({
 
       <Typography
         color={textColor}
-        fontWeight="bold"
-        $lineHeight="100%"
-        variant={labelVariant}
       >
         {label}
       </Typography>

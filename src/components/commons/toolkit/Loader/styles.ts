@@ -1,8 +1,9 @@
 import styled, { keyframes } from 'styled-components'
 
 interface Props {
-  $width?: string
-  $height?: string
+  $color?: string
+  $width: string
+  $height: string
   $borderRadius?: string
 
 }

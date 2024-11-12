@@ -37,7 +37,7 @@ export const ButtonLoader: React.FC<Props> = ({ color, variant }) => {
       exit={{ opacity: 0 }}
       $color={background}
     >
-      <Loader color={getLoaderColor()} />
+      <Loader color={getLoaderColor()} width='6rem' height='2rem' />
     </Container>
   )
 }

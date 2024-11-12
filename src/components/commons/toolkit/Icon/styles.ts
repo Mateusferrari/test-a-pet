@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 type ContainerProps = {
-  size?: string
+  $size?: string
 }
 
 export const Container = styled.div<ContainerProps>`
-  width: ${({ size }) => size};
-  height: ${({ size }) => size};
+  width: ${({ $size }) => $size};
+  height: ${({ $size }) => $size};
 
   display: flex;
   position: relative;
