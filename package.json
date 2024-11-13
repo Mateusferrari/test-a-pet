@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
+    "start": "concurrently \"next start\" \"json-server --watch  data/db.json --port 5000",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "server": "json-server data/db.json --port 5000"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^7.10.0",
     "@typescript-eslint/parser": "^7.10.0",
     "babel-plugin-styled-components": "^2.1.4",
+    "concurrently": "^9.1.0",
     "eslint": "8.56.0",
     "eslint-config-next": "^14.2.3",
     "eslint-config-prettier": "^9.1.0",
