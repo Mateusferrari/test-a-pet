@@ -1,0 +1,23 @@
+{
+  "Scheduling": [
+    {
+      "id": "1731490414223-5153",
+      "date": "2024-11-14",
+      "hour": "10:20",
+      "pet": {
+        "name": "Neve",
+        "dateOfBirth": "2024-11-05",
+        "specie": "Gato",
+        "breed": "Vira-lata",
+        "owner": {
+          "name": "Ana",
+          "tel": "(16) 1234-5678"
+        }
+      },
+      "veterinary": {
+        "name": "Dr. Maria",
+        "crm": ""
+      }
+    }
+  ]
+}

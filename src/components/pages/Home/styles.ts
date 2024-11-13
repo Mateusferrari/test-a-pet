@@ -9,33 +9,39 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
+  overflow: hidden;
   row-gap: 2rem;
 `
 
 export const PageContent = styled.div`
   width: 100%;
 
-  padding: 2rem;
+  padding-inline-start: 2rem;
 
   display: grid;
-  grid-template-columns: 1fr 20rem;
 
   row-gap: 2rem;
 
 
+  overflow: hidden;
+
+
+
   ${defaultAnchors({
-  gridTemplateColumns: ['1fr', '1fr', '1fr', '1fr', '1fr', '1fr 50rem;']
+  gridTemplateColumns: ['1fr', '1fr', '1fr', '1fr', '1fr','1fr 30rem', '1fr 45rem;']
 })}
 `
 
 export const Banner = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 5.7rem);
+
+  overflow: hidden;
 
   border-radius: 2rem;
 
   ${defaultAnchors({
-  display: ['none', 'none', 'none', 'none', 'none', 'flex']
+  display: ['none', 'none', 'none', 'none', 'none','none',  'flex', 'flex']
 })}
 `
 
@@ -45,4 +51,7 @@ export const BannerImage = styled.img`
 
   object-fit: cover;
   border-radius: 2rem;
+  ${defaultAnchors({
+  display: ['none', 'none', 'none', 'none', 'none', 'none', 'flex', 'flex']
+})}
 `

@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
+import { monstserrat } from '@globals/fonts'
+
 export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -12,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Roboto', sans-serif;
+    font-family: ${monstserrat.style.fontFamily}, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 

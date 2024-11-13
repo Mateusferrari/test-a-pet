@@ -3,7 +3,6 @@ export interface Pet {
   dateOfBirth: string
   specie: string
   breed: string
-  gender: string
   owner: Owner
 }
 
