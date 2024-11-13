@@ -1,37 +1,37 @@
 // External Libraries
 import React from 'react'
 
-// Hooks
-import { useScheduling } from './hooks/useScheduling'
-
 // Components
 import { Row } from './components/Row'
 import { TableHeader } from './components/TableHeader'
 
-// Styles
-import { Container, TableBody } from './styles'
+// Types
 import { Scheduling } from 'src/dtos'
 
+// Styles
+import { Container, TableBody } from './styles'
+
+
 interface Props {
+  schedules?: Scheduling[]
   onRowClick: (schedule?: Scheduling) => void
 }
 
-export const Table: React.FC<Props> = ({onRowClick}) => {
-  // Hooks
-  const { data } = useScheduling({})
-
+export const Table: React.FC<Props> = ({ schedules, onRowClick }) => {
   // Functions
   function renderRows() {
-    return data.map(scheduling => (
-      <Row key={scheduling.id} scheduling={scheduling} onClick={onRowClick}/>
+    if (!schedules || !schedules.length) return null
+
+    return schedules?.map((scheduling) => (
+      <Row key={scheduling?.id} scheduling={scheduling} onClick={onRowClick} />
     ))
   }
 
   return (
     <Container>
       <TableHeader />
-
       <TableBody>{renderRows()}</TableBody>
     </Container>
   )
 }
+

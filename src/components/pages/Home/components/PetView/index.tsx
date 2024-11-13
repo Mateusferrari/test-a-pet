@@ -12,18 +12,15 @@ import { ManageSchedulesModalMethods } from './modals/ManageSchedulesModal/types
 
 // Styles
 import { Container, NoteContainer, NoteText } from './styles'
+import { usePetView } from './hooks/usePetView'
+import { EmptyMessage } from './components/Table/components/EmptyMessage'
 
-interface Props {
-  // Props
-}
-
-export const PetView: React.FC<Props> = (
-  {
-    /* Props */
-  }
-) => {
+export const PetView: React.FC = () => {
   // Refs
   const manageScheduleModalRef = useRef<ManageSchedulesModalMethods>(null)
+
+  // Hooks
+  const { data } = usePetView({})
 
   // Functions
   function openModal(schedule?: Scheduling) {
@@ -38,11 +35,14 @@ export const PetView: React.FC<Props> = (
           modal será aberto para edição.
         </NoteText>
       </NoteContainer>
-      
+
       <Button label={'Adicionar novo Agendamento'} onClick={openModal} />
 
-      <Table onRowClick={openModal} />
-
+      {!data || !data.length ? (
+        <EmptyMessage />
+      ) : (
+        <Table schedules={data} onRowClick={openModal} />
+      )}
 
       <ManageSchedulesModal ref={manageScheduleModalRef} />
     </Container>
