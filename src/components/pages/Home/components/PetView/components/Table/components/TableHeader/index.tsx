@@ -28,6 +28,8 @@ export const TableHeader: React.FC = () => {
         <HeaderField value="Contato" />
 
         <HeaderField value="Veterinário" />
+
+        <HeaderField value="" />
       </HeaderRow>
     </Container>
   )

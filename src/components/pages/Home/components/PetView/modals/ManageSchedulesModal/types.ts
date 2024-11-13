@@ -6,5 +6,5 @@ export interface ManageSchedulesModalMethods {
 }
 
 export interface ManageSchedulesModalProps {
-  // Props
+  refreshSchedules: () => void
 }

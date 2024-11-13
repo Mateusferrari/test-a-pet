@@ -8,6 +8,8 @@ import { getScheduling } from '@services/scheduling.get'
 
 // Types
 import { UsePetViewParams } from './types'
+import { deleteScheduling } from '@services/scheduling.delete'
+
 
 export function usePetView({ }: UsePetViewParams) {
   const { data, isLoading, mutate } = useSWR(
@@ -26,7 +28,22 @@ export function usePetView({ }: UsePetViewParams) {
     }
   }
 
+  async function deleted(e: React.MouseEvent<HTMLButtonElement>,scheduleId: string){
+    e.stopPropagation()
+
+    if(!scheduleId) return
+
+    try {
+      await deleteScheduling(scheduleId)
+      mutate()
+    } catch (error) {
+      toast.error('Erro ao deletar agendamento')
+    }
+
+  }
+
   return {
+    deleted,
     data,
     isLoading,
     refreshSchedules: mutate

@@ -23,6 +23,9 @@ export const PageContent = styled.div`
   row-gap: 2rem;
 
 
+  overflow: hidden;
+
+
 
   ${defaultAnchors({
   gridTemplateColumns: ['1fr', '1fr', '1fr', '1fr', '1fr', '1fr 45rem;']

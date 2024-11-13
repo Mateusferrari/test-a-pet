@@ -5,20 +5,26 @@ import React from 'react'
 import { RowField } from './RowField'
 
 // Utils
-import { formatDate, formatPhoneNumber, formatVeterinaryName } from '../../utils'
+import {
+  formatDate,
+  formatPhoneNumber,
+  formatVeterinaryName
+} from '../../utils'
 
 // Types
 import { Scheduling } from 'src/dtos'
 
 // Styles
-import { Container } from './styles'
+import { Container, IconContainer, IconField } from './styles'
+import { Icon } from '@components/toolkit/Icon'
 
 interface Props {
   scheduling: Scheduling
   onClick: (schedule?: Scheduling) => void
+  onDeletedClick: (e:React.MouseEvent<HTMLButtonElement>, scheduleId: string) => void
 }
 
-export const Row: React.FC<Props> = ({ scheduling, onClick }) => {
+export const Row: React.FC<Props> = ({ scheduling, onClick, onDeletedClick}) => {
   return (
     <Container onClick={() => onClick(scheduling)}>
       <RowField
@@ -44,6 +50,12 @@ export const Row: React.FC<Props> = ({ scheduling, onClick }) => {
       <RowField value={formatPhoneNumber(scheduling?.pet?.owner?.tel)} />
 
       <RowField value={formatVeterinaryName(scheduling?.veterinary?.name)} />
+
+      <IconField>
+        <IconContainer onClick={(e) => onDeletedClick(e, scheduling.id)}>
+          <Icon src="/trash.svg"></Icon>
+        </IconContainer>
+      </IconField>
     </Container>
   )
 }

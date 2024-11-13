@@ -1,10 +1,14 @@
 // External Libraries
-import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { FormEvent, useState } from 'react'
 
-// Hooks
+// Services
+import { putSchedule } from '@services/scheduling.put'
+import { postSchedule } from '@services/scheduling.post'
 
 
 // Utils
+import { buildFormFields } from '../../utils/buildFormFields'
 import { buildSchedule } from './utils/buildSchedule'
 import { makeInitialErrors, makeInitialFields } from './utils'
 
@@ -13,7 +17,7 @@ import { Scheduling } from 'src/dtos'
 import { FormFields, UseManageSchedulesParams } from './types'
 
 
-export function useManageSchedules({ }: UseManageSchedulesParams) {
+export function useManageSchedules({ refreshSchedules }: UseManageSchedulesParams) {
 
   // States
   const [visible, setVisible] = useState(false)
@@ -46,7 +50,7 @@ export function useManageSchedules({ }: UseManageSchedulesParams) {
     setFormFields(makeInitialFields)
   }
 
-  function handleFieldChange(updated: Partial<FormFields> ) {
+  function handleFieldChange(updated: Partial<FormFields>) {
     for (const key in updated) {
       if (key in errors) setErrors(prev => ({ ...prev, [key]: '' }))
     }
@@ -54,5 +58,20 @@ export function useManageSchedules({ }: UseManageSchedulesParams) {
     setFormFields(prev => ({ ...prev, ...updated }))
   }
 
-  return { formFields, errors, visible, handleClose, handleRefMethods, handleFieldChange, isEditing, loading}
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault()
+
+    try {
+      setLoading(true)
+      await isEditing ? putSchedule(scheduleId, buildFormFields(formFields)) : postSchedule(buildFormFields(formFields))
+      refreshSchedules()
+      handleClose()
+    } catch (error) {
+      toast.error('Erro ao adicionar agendamento')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return { formFields, errors, visible, handleClose, handleRefMethods, handleFieldChange, isEditing, loading, handleSubmit }
 }

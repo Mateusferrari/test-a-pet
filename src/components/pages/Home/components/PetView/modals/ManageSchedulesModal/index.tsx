@@ -1,5 +1,6 @@
 // External Libraries
-import React, { useImperativeHandle } from 'react'
+import React, { FormEvent, useImperativeHandle } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
 import { AnimatePresence } from 'framer-motion'
 
 // Components
@@ -8,15 +9,22 @@ import { SelectGeneric } from '@components/structure/SelectGeneric'
 import { Option } from '@components/structure/SelectGeneric/types'
 import { Button } from '@components/buttons/Button'
 
+// Services
+import { postSchedule } from '@services/scheduling.post'
+
 // Hooks
 import { useManageSchedules } from './hooks/useManageSchedules'
 import { BACKDROP_ANIMATION, SIDE_PANEL_ANIMATION } from './constants'
+
+// Utils
+import { buildFormFields } from './utils/buildFormFields'
 
 // Types
 import { ManageSchedulesModalProps, ManageSchedulesModalMethods } from './types'
 
 // Styles
 import { Backdrop, ButtonsContainer, Container, Form } from './styles'
+import { putSchedule } from '@services/scheduling.put'
 
 export const ManageSchedulesModal = React.forwardRef<
   ManageSchedulesModalMethods,
@@ -31,14 +39,12 @@ export const ManageSchedulesModal = React.forwardRef<
     errors,
     handleFieldChange,
     isEditing,
-    loading
+    loading,
+    handleSubmit
   } = useManageSchedules(props)
   useImperativeHandle(ref, handleRefMethods)
 
-  // Functions
-  function handleSubmit() {
-    console.log()
-  }
+
 
   return (
     <AnimatePresence initial={false}>
@@ -155,6 +161,9 @@ export const ManageSchedulesModal = React.forwardRef<
               </ButtonsContainer>
             </Form>
           </Container>
+
+          <ToastContainer/>
+          
           <Backdrop
             role="button"
             {...BACKDROP_ANIMATION}

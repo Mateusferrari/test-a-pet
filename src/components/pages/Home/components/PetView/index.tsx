@@ -11,7 +11,7 @@ import { Scheduling } from 'src/dtos'
 import { ManageSchedulesModalMethods } from './modals/ManageSchedulesModal/types'
 
 // Styles
-import { Container, NoteContainer, NoteText } from './styles'
+import { Container, NoteContainer, NoteText, Scroll } from './styles'
 import { usePetView } from './hooks/usePetView'
 import { EmptyMessage } from './components/Table/components/EmptyMessage'
 
@@ -20,7 +20,7 @@ export const PetView: React.FC = () => {
   const manageScheduleModalRef = useRef<ManageSchedulesModalMethods>(null)
 
   // Hooks
-  const { data } = usePetView({})
+  const { data, refreshSchedules, isLoading, deleted } = usePetView({})
 
   // Functions
   function openModal(schedule?: Scheduling) {
@@ -41,10 +41,13 @@ export const PetView: React.FC = () => {
       {!data || !data.length ? (
         <EmptyMessage />
       ) : (
-        <Table schedules={data} onRowClick={openModal} />
+        <Scroll>
+
+          <Table schedules={data} onRowClick={openModal} isLoading={isLoading} onDeletedClick={deleted}/>
+        </Scroll>
       )}
 
-      <ManageSchedulesModal ref={manageScheduleModalRef} />
+      <ManageSchedulesModal ref={manageScheduleModalRef} refreshSchedules={refreshSchedules} />
     </Container>
   )
 }
