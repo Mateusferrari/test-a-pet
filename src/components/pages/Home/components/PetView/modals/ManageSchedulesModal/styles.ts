@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
+import { defaultAnchors } from '@services/facepaint'
 
 export const Container = styled(motion.div)`
-  width: 43rem;
+  ${defaultAnchors({
+  width: ['100vw', '100vw', '100vw', '100vw', '43rem', '43rem']
+})}
 
   display: flex;
   flex-direction: column;

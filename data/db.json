@@ -1,173 +1,21 @@
 {
   "Scheduling": [
     {
-      "id": "1",
-      "pet": {
-        "name": "Bella",
-        "breed": "Labrador",
-        "dateOfBirth": "2020-03-15",
-        "specie": "Dog",
-        "owner": {
-          "name": "Alice Johnson",
-          "tel": "+1 123-456-7890"
-        }
-      },
-      "veterinary": {
-        "name": "Dr. Robert Smith",
-        "crm": "CRM123456"
-      },
-      "date": "2024-11-20",
-      "hour": "10:00"
-    },
-    {
-      "id": "2",
-      "pet": {
-        "name": "Max",
-        "breed": "Siamese",
-        "dateOfBirth": "2019-06-22",
-        "specie": "Cat",
-        "owner": {
-          "name": "John Doe",
-          "tel": "+1 987-654-3210"
-        }
-      },
-      "veterinary": {
-        "name": "Dr. Emily Taylor",
-        "crm": "CRM654321"
-      },
-      "date": "2024-11-21",
-      "hour": "14:30"
-    },
-    {
-      "id": "3",
-      "pet": {
-        "name": "Charlie",
-        "breed": "Holland Lop",
-        "dateOfBirth": "2021-01-10",
-        "specie": "Rabbit",
-        "owner": {
-          "name": "Sophia Brown",
-          "tel": "+1 555-123-4567"
-        }
-      },
-      "veterinary": {
-        "name": "Dr. Lucas Williams",
-        "crm": "CRM789012"
-      },
-      "date": "2024-11-22",
-      "hour": "09:15"
-    },
-    {
-      "id": "4",
-      "pet": {
-        "name": "Luna",
-        "breed": "Golden Retriever",
-        "dateOfBirth": "2022-08-25",
-        "specie": "Dog",
-        "owner": {
-          "name": "Michael Green",
-          "tel": "+1 321-654-0987"
-        }
-      },
-      "veterinary": {
-        "name": "Dr. Olivia Johnson",
-        "crm": "CRM345678"
-      },
-      "date": "2024-11-23",
-      "hour": "11:45"
-    },
-    {
-      "id": "1731459975326-1609",
+      "id": "1731490414223-5153",
       "date": "2024-11-14",
-      "hour": "10:30",
+      "hour": "10:20",
       "pet": {
         "name": "Neve",
-        "dateOfBirth": "2024-11-22",
+        "dateOfBirth": "2024-11-05",
         "specie": "Gato",
-        "breed": "branco",
-        "owner": {
-          "name": "ana",
-          "tel": "4002-8922"
-        }
-      },
-      "veterinary": {
-        "name": "123",
-        "crm": ""
-      }
-    },
-    {
-      "id": "1731460007927-1141",
-      "date": "2024-11-14",
-      "hour": "10:30",
-      "pet": {
-        "name": "Neve",
-        "dateOfBirth": "2024-11-22",
-        "specie": "Gato",
-        "breed": "branco",
-        "owner": {
-          "name": "ana",
-          "tel": "4002-8922"
-        }
-      },
-      "veterinary": {
-        "name": "123",
-        "crm": ""
-      }
-    },
-    {
-      "id": "1731460012661-1718",
-      "date": "2024-11-14",
-      "hour": "10:30",
-      "pet": {
-        "name": "Neve",
-        "dateOfBirth": "2024-11-22",
-        "specie": "Gato",
-        "breed": "branco",
-        "owner": {
-          "name": "ana",
-          "tel": "4002-8922"
-        }
-      },
-      "veterinary": {
-        "name": "123",
-        "crm": ""
-      }
-    },
-    {
-      "id": "1731460151717-6505",
-      "date": "2024-11-13",
-      "hour": "10:30",
-      "pet": {
-        "name": "Larissa",
-        "dateOfBirth": "2024-11-29",
-        "specie": "Cachorro",
         "breed": "Vira-lata",
         "owner": {
-          "name": "Patrícia",
-          "tel": "4554212151"
+          "name": "Ana",
+          "tel": "(16) 1234-5678"
         }
       },
       "veterinary": {
-        "name": "123",
-        "crm": ""
-      }
-    },
-    {
-      "id": "1731460227501-6727",
-      "date": "2024-11-20",
-      "hour": "10:00",
-      "pet": {
-        "name": "Bella",
-        "dateOfBirth": "2020-03-15",
-        "specie": "Dog",
-        "breed": "Labrador",
-        "owner": {
-          "name": "Alice Johnson",
-          "tel": "+1 123-456-7890"
-        }
-      },
-      "veterinary": {
-        "name": "Dr. Robert Smith",
+        "name": "Dr. Maria",
         "crm": ""
       }
     }

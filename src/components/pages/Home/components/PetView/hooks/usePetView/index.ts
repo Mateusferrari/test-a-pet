@@ -1,7 +1,7 @@
 'use client'
 // External LIbraries
 import useSWR from 'swr'
-import { toast } from 'react-toastify'
+import { toast as notifyToast } from 'react-toastify';
 
 // Services
 import { getScheduling } from '@services/scheduling.get'
@@ -22,22 +22,73 @@ export function usePetView({ }: UsePetViewParams) {
   async function fetchListSchedules() {
     try {
       const response = await getScheduling()
+      notifyToast.success('Agendamentos listados com sucesso', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        draggable: false,
+        style: {
+          fontSize: '14px',
+          padding: '10px 15px',
+          maxWidth: '400px'
+        }
+      });
       return response
+
     } catch (error) {
-      toast.error('Erro ao mostrar agendamentos')
+      notifyToast.error('Erro ao listar agendamento', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        draggable: false,
+        style: {
+          fontSize: '14px',
+          padding: '10px 15px',
+          maxWidth: '400px'
+        }
+      });
     }
+
+
   }
 
-  async function deleted(e: React.MouseEvent<HTMLButtonElement>,scheduleId: string){
+  async function deleted(e: React.MouseEvent<HTMLButtonElement>, scheduleId: string) {
     e.stopPropagation()
 
-    if(!scheduleId) return
+    if (!scheduleId) return
 
     try {
       await deleteScheduling(scheduleId)
-      mutate()
+      await mutate()
+
+      notifyToast.success('Agendamento deletado com sucesso', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        draggable: false,
+        style: {
+          fontSize: '14px',
+          padding: '10px 15px',
+          maxWidth: '400px'
+        }
+      });
     } catch (error) {
-      toast.error('Erro ao deletar agendamento')
+
+      notifyToast.error('Erro ao deletar agendamento', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        draggable: false,
+        style: {
+          fontSize: '14px',
+          padding: '10px 15px',
+          maxWidth: '400px'
+        }
+      });
     }
 
   }

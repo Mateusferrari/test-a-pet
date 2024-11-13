@@ -20,7 +20,7 @@ export const Input: React.FC<Props> = ({
   errorMessage,
   placeholder,
   onChange,
-  disabled = false, 
+  disabled = false,
 }) => {
   return (
     <Container>
@@ -35,7 +35,7 @@ export const Input: React.FC<Props> = ({
         value={value}
         placeholder={placeholder}
         onChange={e => onChange(e.target.value)}
-        hasError={!!errorMessage}
+        $hasError={!!errorMessage}
         aria-invalid={!!errorMessage}
         disabled={disabled}
       />

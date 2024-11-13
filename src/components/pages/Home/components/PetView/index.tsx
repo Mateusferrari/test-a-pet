@@ -14,6 +14,7 @@ import { ManageSchedulesModalMethods } from './modals/ManageSchedulesModal/types
 import { Container, NoteContainer, NoteText, Scroll } from './styles'
 import { usePetView } from './hooks/usePetView'
 import { EmptyMessage } from './components/Table/components/EmptyMessage'
+import { ToastContainer } from 'react-toastify'
 
 export const PetView: React.FC = () => {
   // Refs
@@ -36,13 +37,14 @@ export const PetView: React.FC = () => {
         </NoteText>
       </NoteContainer>
 
+      <ToastContainer position="top-center" autoClose={5000} />
+
       <Button label={'Adicionar novo Agendamento'} onClick={openModal} />
 
       {!data || !data.length ? (
         <EmptyMessage />
       ) : (
         <Scroll>
-
           <Table schedules={data} onRowClick={openModal} isLoading={isLoading} onDeletedClick={deleted}/>
         </Scroll>
       )}

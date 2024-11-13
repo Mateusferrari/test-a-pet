@@ -26,8 +26,11 @@ export const NoteText = styled.p`
 `;
 
 export const Scroll = styled.div`
-max-height: 70vh;
-overflow: auto;
+  max-height: 70vh;
+  max-width: calc(100vw - 5rem);
+
+  overflow: auto;
+
     &::-webkit-scrollbar {
       width: 12px;
     }

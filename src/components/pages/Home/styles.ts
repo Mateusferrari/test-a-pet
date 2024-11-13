@@ -28,7 +28,7 @@ export const PageContent = styled.div`
 
 
   ${defaultAnchors({
-  gridTemplateColumns: ['1fr', '1fr', '1fr', '1fr', '1fr', '1fr 45rem;']
+  gridTemplateColumns: ['1fr', '1fr', '1fr', '1fr', '1fr','1fr 30rem', '1fr 45rem;']
 })}
 `
 
@@ -41,7 +41,7 @@ export const Banner = styled.div`
   border-radius: 2rem;
 
   ${defaultAnchors({
-  display: ['none', 'none', 'none', 'none', 'none', 'flex']
+  display: ['none', 'none', 'none', 'none', 'none','none',  'flex', 'flex']
 })}
 `
 
@@ -51,4 +51,7 @@ export const BannerImage = styled.img`
 
   object-fit: cover;
   border-radius: 2rem;
+  ${defaultAnchors({
+  display: ['none', 'none', 'none', 'none', 'none', 'none', 'flex', 'flex']
+})}
 `

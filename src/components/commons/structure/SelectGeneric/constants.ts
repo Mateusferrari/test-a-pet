@@ -6,6 +6,6 @@ export const SPECIES_OPTIONS: Option[] = [
 ];
 
 export const VET_OPTIONS: Option[] = [
-  { value: ' Dr Maria', label: '123' },
-  { value: 'Dr João', label: '124' },
+  { value: '123', label: 'Dr. Maria' },
+
 ];
