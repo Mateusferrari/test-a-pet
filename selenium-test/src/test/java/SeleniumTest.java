@@ -212,6 +212,51 @@ public class SeleniumTest {
     }
 
     @Test
+    @DisplayName("Testando inserção do telefone de contato do proprietário")
+    void testAdicionarTelefoneProprietario() throws InterruptedException {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+      WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+      botaoAdicionar.click();
+      Thread.sleep(3000);
+      WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
+      WebElement campoTelefoneProprietario = driver.findElement(By.cssSelector("input[placeholder='Insira o telefone de contato']"));
+      campoTelefoneProprietario.sendKeys("(11) 98888-8888");
+      softly.assertThat(campoTelefoneProprietario.getAttribute("value")).isEqualTo("(11) 98888-8888");
+      softly.assertAll();
+    }
+
+      @Test
+      @DisplayName("Testando inserção do nome do proprietário")
+      void testAdicionarNomeProprietario() throws InterruptedException {
+        final var softly = new SoftAssertions();
+        driver.get(BASE_URL);
+        WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+        botaoAdicionar.click();
+        Thread.sleep(3000);
+        WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
+        WebElement campoNomeProprietario = driver.findElement(By.cssSelector("input[placeholder='Insira o nome do proprietário']"));
+        campoNomeProprietario.sendKeys("Mateus");
+        softly.assertThat(campoNomeProprietario.getAttribute("value")).isEqualTo("Mateus");
+        softly.assertAll();
+      }
+    @Test
+    @DisplayName("Testando inserção da raça do pet")
+    void testAdicionarRacaPet() throws InterruptedException {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+      WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+      botaoAdicionar.click();
+      Thread.sleep(3000);
+      WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
+      WebElement campoRacaPet = driver.findElement(By.cssSelector("input[placeholder='Digite a raça do pet aqui']"));
+      campoRacaPet.sendKeys("Vira Lata");
+      softly.assertThat(campoRacaPet.getAttribute("value")).isEqualTo("Vira Lata");
+      softly.assertAll();
+      driver.quit();
+    }
+
+    @Test
     @DisplayName("Testando seleção de opções no campo 'Veterinário'")
     void testSelecaoVeterinario() {
       final var softly = new SoftAssertions();
