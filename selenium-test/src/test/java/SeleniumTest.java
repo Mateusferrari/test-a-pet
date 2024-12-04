@@ -331,6 +331,7 @@ public class SeleniumTest {
       softly.assertThat(campoNomePet.getAttribute("value").length()).isLessThanOrEqualTo(128);
       softly.assertAll();
     }
+
     @Test
     @DisplayName("Validação de texto muito longo no campo 'Nome do Pet'")
     void testValidarTextoLongoNomeDono() throws InterruptedException {
