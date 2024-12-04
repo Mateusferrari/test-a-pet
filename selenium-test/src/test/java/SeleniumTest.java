@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -120,6 +119,17 @@ public class SeleniumTest {
       WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
       softly.assertThat(modal.isDisplayed()).isTrue();
       softly.assertAll();
+    }
+
+    @Test
+    @DisplayName("Fechar modal ao pressionar o botão 'Cancelar'")
+    void testFecharModalAoPressionarCancelar() throws InterruptedException {
+      driver.get(BASE_URL);
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      WebElement botaoAdicionar = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sc-cHqXqK.kZzwzX")));
+      WebElement botaoCancelar = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sc-jtQUzJ.kMjZHz")));
+      botaoCancelar.click();
+      boolean modalFechado = driver.findElements(By.cssSelector(".modal-agendamento")).isEmpty();
     }
 
     @Test
@@ -237,7 +247,6 @@ public class SeleniumTest {
       softly.assertAll();
     }
 
-
     @Test
     @DisplayName("Testando inserção do nome do proprietário")
     void testAdicionarNomeProprietario() throws InterruptedException {
@@ -269,7 +278,6 @@ public class SeleniumTest {
       softly.assertThat(campoRacaPet.getAttribute("value")).isEqualTo(fakeBreed);
       softly.assertAll();
     }
-
 
     @Test
     @DisplayName("Testando seleção de opções no campo 'Veterinário'")
@@ -314,8 +322,6 @@ public class SeleniumTest {
       softly.assertAll();
     }
 
-
-
     @Test
     @DisplayName("Validação de texto muito longo no campo 'Nome do Pet'")
     void testValidarTextoLongoNomePet() throws InterruptedException {
@@ -333,7 +339,7 @@ public class SeleniumTest {
     }
 
     @Test
-    @DisplayName("Validação de texto muito longo no campo 'Nome do Pet'")
+    @DisplayName("Validação de texto muito longo no campo 'Nome do Proprietario'")
     void testValidarTextoLongoNomeDono() throws InterruptedException {
       final var softly = new SoftAssertions();
       driver.get(BASE_URL);
@@ -381,7 +387,5 @@ public class SeleniumTest {
       softly.assertThat(campoNomePet.getAttribute("value")).isEqualTo(nomePetComNumeros);
       softly.assertAll();
     }
-
-
   }
 }
