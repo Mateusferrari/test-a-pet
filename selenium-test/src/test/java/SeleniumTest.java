@@ -143,7 +143,7 @@ public class SeleniumTest {
       Thread.sleep(3000);
       WebElement campoData = driver.findElement(By.cssSelector("input[type='date']"));
       campoData.sendKeys("10/10/2030");
-      softly.assertThat(campoData.getAttribute("value")).isEqualTo("10/10/2030");
+      softly.assertThat(campoData.getAttribute("value")).isEqualTo("2030-10-10");
       softly.assertAll();
     }
 
