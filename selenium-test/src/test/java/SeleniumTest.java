@@ -71,8 +71,25 @@ public class SeleniumTest {
       softly.assertThat(botaoCancelar.isDisplayed()).isTrue();
 
       softly.assertAll();
-      driver.quit();
     }
+
+    @Test
+    @DisplayName("Verify 'Enviar' button is present")
+    void testEnviarButtonIsPresent() {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+
+      WebElement botaoAdicionar = new WebDriverWait(driver, Duration.ofSeconds(10))
+        .until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sc-cHqXqK.kZzwzX")));
+      botaoAdicionar.click();
+      WebElement botaoEnviar = new WebDriverWait(driver, Duration.ofSeconds(10))
+        .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".sc-jtQUzJ.jTycSN")));
+
+      softly.assertThat(botaoEnviar.isDisplayed()).isTrue();
+
+      softly.assertAll();
+    }
+
   }
 
   @Nested
