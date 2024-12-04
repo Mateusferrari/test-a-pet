@@ -3,7 +3,9 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -28,5 +30,18 @@ public class SeleniumTest {
     softly.assertThat(currentUrl).isEqualTo(BASE_URL);;
     driver.quit();
 
+  }
+
+  @Test
+  @DisplayName("Testando nome da página")
+  void openProject() throws InterruptedException {
+    final var softly = new SoftAssertions();
+    driver.get(BASE_URL);
+    Thread.sleep(1000);
+    String pageTitle = driver.getTitle();
+    System.out.println("Page Title: " + pageTitle);
+    softly.assertThat(pageTitle).isEqualTo("Home | Test a pet");
+    driver.quit();
+    softly.assertAll();
   }
 }
