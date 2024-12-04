@@ -177,5 +177,22 @@ public class SeleniumTest {
       softly.assertAll();
       driver.quit();
     }
+
+    @Test
+    @DisplayName("Validação de texto muito longo no campo 'Nome do Pet'")
+    void testValidarTextoLongoNomePet() throws InterruptedException {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      WebElement botaoAdicionar = wait.until(ExpectedConditions.elementToBeClickable(
+        By.cssSelector(".sc-cHqXqK.kZzwzX")));
+      botaoAdicionar.click();
+      WebElement campoNomePet = wait.until(ExpectedConditions.elementToBeClickable(
+        By.cssSelector("input[placeholder='Digite o nome do pet aqui']")));
+      campoNomePet.sendKeys("Pedro de Alcântara João Carlos Leopoldo Salvador Bibiano Francisco Xavier de Paula Leocádio Miguel Gabriel Rafael Gonzaga");
+      softly.assertThat(campoNomePet.getAttribute("value").length()).isLessThanOrEqualTo(128);
+      softly.assertAll();
+      driver.quit();
+    }
   }
 }
