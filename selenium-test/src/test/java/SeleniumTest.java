@@ -348,5 +348,22 @@ public class SeleniumTest {
       softly.assertAll();
     }
 
+    @Test
+    @DisplayName("Testar se o campo 'Nome do Proprietário' aceita números")
+    void testNomeProprietarioAceitaNumeros() throws InterruptedException {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+      WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+      botaoAdicionar.click();
+      Thread.sleep(3000);
+
+      WebElement campoNomeProprietario = driver.findElement(By.cssSelector("input[placeholder='Insira o nome do proprietário']"));
+      String nomeProprietarioComNumeros = "Carlos123 Silva";
+      campoNomeProprietario.sendKeys(nomeProprietarioComNumeros);
+
+      softly.assertThat(campoNomeProprietario.getAttribute("value")).isEqualTo(nomeProprietarioComNumeros);
+      softly.assertAll();
+    }
+
   }
 }
