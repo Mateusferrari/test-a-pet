@@ -8,6 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.time.Duration;
 
 public class SeleniumTest {
   private WebDriver driver;
@@ -186,5 +189,28 @@ public class SeleniumTest {
     driver.quit();
   }
 
+  @Test
+  @DisplayName("Testando seleção de opções no campo 'Espécie do Pet'")
+  void testSelecaoEspeciePet() throws InterruptedException {
+    final var softly = new SoftAssertions();
+    driver.get(BASE_URL);
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    WebElement botaoAdicionar = wait.until(ExpectedConditions.elementToBeClickable(
+      By.cssSelector(".sc-cHqXqK.kZzwzX")));
+    botaoAdicionar.click();
+    WebElement dropdownEspecie = wait.until(ExpectedConditions.elementToBeClickable(
+      By.cssSelector(".css-19bb58m")));
+    dropdownEspecie.click();
+    WebElement opcaoCachorro = wait.until(ExpectedConditions.elementToBeClickable(
+      By.xpath("//div[text()='Cachorro']")));
+    opcaoCachorro.click();
+    WebElement valorSelecionado = wait.until(ExpectedConditions.visibilityOfElementLocated(
+      By.xpath("//*[text()='Cachorro']")));
+    System.out.println("Valor selecionado: " + valorSelecionado.getText());
+    softly.assertThat(valorSelecionado.getText()).isEqualTo("Cachorro");
+    softly.assertAll();
+    driver.quit();
+  }
 
 }
+
