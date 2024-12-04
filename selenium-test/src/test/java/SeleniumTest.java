@@ -98,7 +98,7 @@ public class SeleniumTest {
     botaoAdicionar.click();
     Thread.sleep(3000);
     WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
-    WebElement campoNomePet = driver.findElement(By.cssSelector("input[type='hour']"));
+    WebElement campoNomePet = driver.findElement(By.cssSelector("input[placeholder='Digite o nome do pet aqui']"));
     campoNomePet.sendKeys("Rex");
     softly.assertThat(campoNomePet.getAttribute("value")).isEqualTo("Rex");
     softly.assertAll();
@@ -134,6 +134,7 @@ public class SeleniumTest {
     softly.assertThat(campoDataNascimentoPet.getAttribute("value")).isEqualTo("01/01/2020");
     softly.assertAll();
     driver.quit();
+
   }
 
 
