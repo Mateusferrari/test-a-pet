@@ -1,3 +1,4 @@
+import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 @DisplayName("Testes com Selenium para o site Test-a-Pet")
 public class SeleniumTest {
@@ -29,6 +31,7 @@ public class SeleniumTest {
       driver.quit();
     }
   }
+  Faker faker = new Faker();
 
   @Nested
   @DisplayName("Testes básicos do site")
@@ -141,6 +144,24 @@ public class SeleniumTest {
       WebElement campoData = driver.findElement(By.cssSelector("input[type='date']"));
       campoData.sendKeys("10/10/2030");
       softly.assertThat(campoData.getAttribute("value")).isEqualTo("10/10/2030");
+      softly.assertAll();
+    }
+
+    @Test
+    @DisplayName("Inserir data passada")
+    void testInsertPastDate() throws InterruptedException {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+
+      String pastDate = faker.date().past(10, TimeUnit.DAYS).toString();
+      WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+      botaoAdicionar.click();
+      Thread.sleep(3000);
+      WebElement campoData = driver.findElement(By.cssSelector("input[type='date']"));
+      campoData.sendKeys(pastDate);
+
+      softly.assertThat(campoData.getAttribute("value")).isEqualTo("");
+
       softly.assertAll();
     }
 
