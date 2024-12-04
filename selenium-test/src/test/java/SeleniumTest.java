@@ -433,5 +433,18 @@ public class SeleniumTest {
       softly.assertThat(campoNomePet.getAttribute("value")).isEqualTo(nomePetComNumeros);
       softly.assertAll();
     }
+
+    @Test
+    @DisplayName("Validar mensagem de erro ao pressionar 'Adicionar' com campos vazios")
+    void testMensagemErroAoPressionarAdicionar() {
+      driver.get(BASE_URL);
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      WebElement botaoAdicionarModal = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sc-cHqXqK.kZzwzX")));
+      botaoAdicionarModal.click();
+      WebElement botaoAdicionar = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']")));
+      botaoAdicionar.click();
+      WebElement mensagemErro = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".sc-eauhAA.cknIPT")));
+      Assertions.assertTrue(mensagemErro.isDisplayed(), "A mensagem de erro não foi exibida ao pressionar 'Adicionar' com campos obrigatórios vazios.");
+    }
   }
 }
