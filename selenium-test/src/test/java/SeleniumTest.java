@@ -120,4 +120,21 @@ public class SeleniumTest {
     driver.quit();
   }
 
+  @Test
+  @DisplayName("Testando inserção da data de nascimento do pet")
+  void testAdicionarDataNascimentoPet() throws InterruptedException {
+    final var softly = new SoftAssertions();
+    driver.get(BASE_URL);
+    WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+    botaoAdicionar.click();
+    Thread.sleep(3000);
+    WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
+    WebElement campoDataNascimentoPet = driver.findElement(By.cssSelector("input[placeholder='Insira a data de nascimento']"));
+    campoDataNascimentoPet.sendKeys("01/01/2020");
+    softly.assertThat(campoDataNascimentoPet.getAttribute("value")).isEqualTo("01/01/2020");
+    softly.assertAll();
+    driver.quit();
+  }
+
+
 }
