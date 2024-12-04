@@ -152,4 +152,21 @@ public class SeleniumTest {
     driver.quit();
   }
 
+  @Test
+  @DisplayName("Testando inserção do telefone de contato do proprietário")
+  void testAdicionarTelefoneProprietario() throws InterruptedException {
+    final var softly = new SoftAssertions();
+    driver.get(BASE_URL);
+    WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+    botaoAdicionar.click();
+    Thread.sleep(3000);
+    WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
+    WebElement campoTelefoneProprietario = driver.findElement(By.cssSelector("input[placeholder='Insira o telefone de contato']"));
+    campoTelefoneProprietario.sendKeys("(11) 98888-8888");
+    softly.assertThat(campoTelefoneProprietario.getAttribute("value")).isEqualTo("(11) 98888-8888");
+    softly.assertAll();
+    driver.quit();
+  }
+
+
 }
