@@ -76,5 +76,20 @@ public class SeleniumTest {
     softly.assertAll();
     driver.quit();
   }
+  @Test
+  @DisplayName("Testando inserção de hora")
+  void testAdicionarHora() throws InterruptedException {
+    final var softly = new SoftAssertions();
+    driver.get(BASE_URL);
+    WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+    botaoAdicionar.click();
+    Thread.sleep(3000);
+    WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
+    WebElement campoHora = driver.findElement(By.cssSelector("input[type='hour']"));
+    campoHora.sendKeys("10:30");
+    softly.assertThat(campoHora.getAttribute("value")).isEqualTo("10:30");
+    softly.assertAll();
+    driver.quit();
+  }
 
 }
