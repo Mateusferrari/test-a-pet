@@ -55,6 +55,24 @@ public class SeleniumTest {
       softly.assertThat(pageTitle).isEqualTo("Home | Test a pet");
       softly.assertAll();
     }
+
+    @Test
+    @DisplayName("Verify 'Cancelar' button is present")
+    void testCancelarButtonIsPresent() {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+
+      WebElement botaoAdicionar = new WebDriverWait(driver, Duration.ofSeconds(10))
+        .until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sc-cHqXqK.kZzwzX")));
+      botaoAdicionar.click();
+
+      WebElement botaoCancelar = new WebDriverWait(driver, Duration.ofSeconds(10))
+        .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".sc-jtQUzJ.kMjZHz")));
+      softly.assertThat(botaoCancelar.isDisplayed()).isTrue();
+
+      softly.assertAll();
+      driver.quit();
+    }
   }
 
   @Nested
@@ -175,7 +193,6 @@ public class SeleniumTest {
       System.out.println("Valor selecionado no dropdown: " + valorSelecionado.getText());
       softly.assertThat(valorSelecionado.getText()).isEqualTo("Dr. Maria");
       softly.assertAll();
-      driver.quit();
     }
 
     @Test
@@ -192,7 +209,6 @@ public class SeleniumTest {
       campoNomePet.sendKeys("Pedro de Alcântara João Carlos Leopoldo Salvador Bibiano Francisco Xavier de Paula Leocádio Miguel Gabriel Rafael Gonzaga");
       softly.assertThat(campoNomePet.getAttribute("value").length()).isLessThanOrEqualTo(128);
       softly.assertAll();
-      driver.quit();
     }
   }
 }
