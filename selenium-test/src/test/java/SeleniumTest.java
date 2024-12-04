@@ -365,5 +365,23 @@ public class SeleniumTest {
       softly.assertAll();
     }
 
+    @Test
+    @DisplayName("Testar se o campo 'Nome do Pet' aceita números")
+    void testNomePetAceitaNumeros() throws InterruptedException {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+      WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+      botaoAdicionar.click();
+      Thread.sleep(3000);
+
+      WebElement campoNomePet = driver.findElement(By.cssSelector("input[placeholder='Digite o nome do pet aqui']"));
+      String nomePetComNumeros = "Rex123";
+      campoNomePet.sendKeys(nomePetComNumeros);
+
+      softly.assertThat(campoNomePet.getAttribute("value")).isEqualTo(nomePetComNumeros);
+      softly.assertAll();
+    }
+
+
   }
 }
