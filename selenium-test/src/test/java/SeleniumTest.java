@@ -93,6 +93,16 @@ public class SeleniumTest {
       softly.assertAll();
     }
 
+    @Test
+    @DisplayName("Verify 'Adicionar Novo Agendamento' button is present")
+    void testBotaoAdicionarNovoAgendamentoPresente() {
+      driver.get(BASE_URL);
+
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      WebElement botaoAdicionar = wait.until(ExpectedConditions.presenceOfElementLocated(
+        By.cssSelector(".sc-cHqXqK.kZzwzX")));
+    }
+
   }
 
   @Nested
