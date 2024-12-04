@@ -154,5 +154,28 @@ public class SeleniumTest {
       softly.assertThat(valorSelecionado.getText()).isEqualTo("Cachorro");
       softly.assertAll();
     }
+
+    @Test
+    @DisplayName("Testando seleção de opções no campo 'Veterinário'")
+    void testSelecaoVeterinario() {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+      WebElement botaoAdicionar = wait.until(ExpectedConditions.elementToBeClickable(
+        By.cssSelector(".sc-cHqXqK.kZzwzX")));
+      botaoAdicionar.click();
+      WebElement dropdownVeterinario = wait.until(ExpectedConditions.elementToBeClickable(
+        By.cssSelector("#react-select-3-input")));
+      dropdownVeterinario.click();
+      WebElement opcaoVeterinario = wait.until(ExpectedConditions.elementToBeClickable(
+        By.xpath("//div[text()='Dr. Maria']")));
+      opcaoVeterinario.click();
+      WebElement valorSelecionado = wait.until(ExpectedConditions.visibilityOfElementLocated(
+        By.xpath("//*[text()='Dr. Maria']")));
+      System.out.println("Valor selecionado no dropdown: " + valorSelecionado.getText());
+      softly.assertThat(valorSelecionado.getText()).isEqualTo("Dr. Maria");
+      softly.assertAll();
+      driver.quit();
+    }
   }
 }
