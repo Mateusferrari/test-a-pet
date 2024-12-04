@@ -89,4 +89,20 @@ public class SeleniumTest {
     driver.quit();
   }
 
+  @Test
+  @DisplayName("Testando inserção do nome do pet")
+  void testAdicionarNomePet() throws InterruptedException {
+    final var softly = new SoftAssertions();
+    driver.get(BASE_URL);
+    WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+    botaoAdicionar.click();
+    Thread.sleep(3000);
+    WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
+    WebElement campoNomePet = driver.findElement(By.cssSelector("input[type='hour']"));
+    campoNomePet.sendKeys("Rex");
+    softly.assertThat(campoNomePet.getAttribute("value")).isEqualTo("Rex");
+    softly.assertAll();
+    driver.quit();
+  }
+
 }
