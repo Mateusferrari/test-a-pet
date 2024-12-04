@@ -67,11 +67,8 @@ public class SeleniumTest {
     botaoAdicionar.click();
     Thread.sleep(3000);
     WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
-    System.out.println("passou");
     WebElement campoData = driver.findElement(By.cssSelector("input[type='date']"));
-    System.out.println("passou 2");
     campoData.sendKeys("10/10/2030");
-    System.out.println("passou 3");
     softly.assertThat(campoData.getAttribute("value")).isEqualTo("10/10/2030");
     softly.assertAll();
     driver.quit();
