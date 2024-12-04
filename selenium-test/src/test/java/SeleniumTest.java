@@ -44,4 +44,17 @@ public class SeleniumTest {
     driver.quit();
     softly.assertAll();
   }
+  @Test
+  @DisplayName("Testando clique no botão 'Adicionar Novo Agendamento")
+  void testAdicionarNovoAgendamento() throws InterruptedException {
+    final var softly = new SoftAssertions();
+    driver.get(BASE_URL);
+    WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+    botaoAdicionar.click();
+    Thread.sleep(3000);
+    WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
+    softly.assertThat(modal.isDisplayed()).isTrue();
+    softly.assertAll();
+    driver.quit();
+  }
 }
