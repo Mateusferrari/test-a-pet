@@ -446,5 +446,23 @@ public class SeleniumTest {
       WebElement mensagemErro = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".sc-eauhAA.cknIPT")));
       Assertions.assertTrue(mensagemErro.isDisplayed(), "A mensagem de erro não foi exibida ao pressionar 'Adicionar' com campos obrigatórios vazios.");
     }
+    @Test
+    @DisplayName("Verificar se botão Adicionar está desabilitado com campos vazios")
+    void testBotaoAdicionarDesabilitadoComCamposVazios() {
+      driver.get(BASE_URL);
+
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+      // Abrir o modal
+      WebElement botaoAdicionarModal = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sc-cHqXqK.kZzwzX")));
+      botaoAdicionarModal.click();
+      System.out.println("Modal aberto.");
+
+      // Verificar se o botão "Adicionar" está desabilitado
+      WebElement botaoAdicionar = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button[type='submit']")));
+      boolean isDesabilitado = !botaoAdicionar.isEnabled();
+      Assertions.assertTrue(isDesabilitado, "O botão 'Adicionar' deveria estar desabilitado com campos vazios.");
+    }
+
   }
 }
