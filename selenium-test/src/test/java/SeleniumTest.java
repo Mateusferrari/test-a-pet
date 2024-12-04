@@ -294,6 +294,29 @@ public class SeleniumTest {
     }
 
     @Test
+    @DisplayName("Testar inserção de telefone com formato inválido")
+    void testInserirTelefoneInvalido() throws InterruptedException {
+      final var softly = new SoftAssertions();
+      driver.get(BASE_URL);
+
+      WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+      botaoAdicionar.click();
+      Thread.sleep(3000);
+
+      WebElement campoTelefone = driver.findElement(By.cssSelector("input[placeholder='Insira o telefone de contato']"));
+      String invalidPhone = "1234-ABCD";
+      campoTelefone.sendKeys(invalidPhone);
+      WebElement botaoEnviar = driver.findElement(By.cssSelector(".sc-jtQUzJ.jTycSN"));
+      botaoEnviar.click();
+      WebElement campoTelefoneValor = driver.findElement(By.cssSelector("input[placeholder='Insira o telefone de contato']"));
+      softly.assertThat(campoTelefoneValor.getAttribute("value")).isEqualTo(invalidPhone);
+
+      softly.assertAll();
+    }
+
+
+
+    @Test
     @DisplayName("Validação de texto muito longo no campo 'Nome do Pet'")
     void testValidarTextoLongoNomePet() throws InterruptedException {
       final var softly = new SoftAssertions();
