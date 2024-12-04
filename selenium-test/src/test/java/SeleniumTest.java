@@ -160,10 +160,28 @@ public class SeleniumTest {
     WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
     botaoAdicionar.click();
     Thread.sleep(3000);
+
     WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
     WebElement campoTelefoneProprietario = driver.findElement(By.cssSelector("input[placeholder='Insira o telefone de contato']"));
     campoTelefoneProprietario.sendKeys("(11) 98888-8888");
     softly.assertThat(campoTelefoneProprietario.getAttribute("value")).isEqualTo("(11) 98888-8888");
+    softly.assertAll();
+    driver.quit();
+  }
+
+  @Test
+  @DisplayName("Testando validação de campos obrigatórios ao adicionar")
+  void testValidarCamposObrigatorios() throws InterruptedException {
+    final var softly = new SoftAssertions();
+    driver.get(BASE_URL);
+    WebElement botaoAdicionar = driver.findElement(By.cssSelector(".sc-cHqXqK.kZzwzX"));
+    botaoAdicionar.click();
+    Thread.sleep(3000);
+    WebElement modal = driver.findElement(By.cssSelector(".sc-hJRrWL.iBpHYd"));
+    WebElement botaoConfirmarAdicionar = driver.findElement(By.cssSelector(".sc-jtQUzJ.jTycSN"));
+    botaoConfirmarAdicionar.click();
+    Thread.sleep(3000);
+    WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Campo Obrigatório')]"));
     softly.assertAll();
     driver.quit();
   }
