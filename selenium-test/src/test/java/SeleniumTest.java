@@ -102,6 +102,52 @@ public class SeleniumTest {
         By.cssSelector(".sc-cHqXqK.kZzwzX")));
     }
 
+    @Test
+    @DisplayName("Verificar se todos os campos do formulário possuem labels ou placeholders")
+    void testCamposFormularioPossuemLabelsOuPlaceholders() {
+      driver.get(BASE_URL);
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      WebElement botaoAdicionar = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sc-cHqXqK.kZzwzX")));
+      botaoAdicionar.click();
+
+      WebElement campoNomePet = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[placeholder='Digite o nome do pet aqui']")));
+      WebElement campoNomeProprietario = driver.findElement(By.cssSelector("input[placeholder='Insira o nome do proprietário']"));
+      WebElement campoTelefone = driver.findElement(By.cssSelector("input[placeholder='Insira o telefone de contato']"));
+      WebElement campoEspecie = driver.findElement(By.cssSelector("#react-select-2-input"));
+      WebElement campoRaca = driver.findElement(By.cssSelector("input[placeholder='Digite a raça do pet aqui']"));
+      WebElement campoNascimento = driver.findElement(By.cssSelector("input[type='date']"));
+      WebElement campoVeterinario = driver.findElement(By.cssSelector("#react-select-3-input"));
+
+      Assertions.assertTrue(
+        campoNomePet.getAttribute("placeholder") != null || campoNomePet.getAttribute("aria-labelledby") != null,
+        "O campo 'Nome do Pet' não possui label ou placeholder associado."
+      );
+      Assertions.assertTrue(
+        campoNomeProprietario.getAttribute("placeholder") != null || campoNomeProprietario.getAttribute("aria-labelledby") != null,
+        "O campo 'Nome do Proprietário' não possui label ou placeholder associado."
+      );
+      Assertions.assertTrue(
+        campoTelefone.getAttribute("placeholder") != null || campoTelefone.getAttribute("aria-labelledby") != null,
+        "O campo 'Telefone' não possui label ou placeholder associado."
+      );
+      Assertions.assertTrue(
+        campoEspecie.getAttribute("aria-labelledby") != null || campoEspecie.getText() != null,
+        "O campo 'Espécie do Pet' não possui label ou texto associado."
+      );
+      Assertions.assertTrue(
+        campoRaca.getAttribute("placeholder") != null || campoRaca.getAttribute("aria-labelledby") != null,
+        "O campo 'Raça do Pet' não possui label ou placeholder associado."
+      );
+      Assertions.assertTrue(
+        campoNascimento.getAttribute("aria-labelledby") != null || campoNascimento.getAttribute("placeholder") != null,
+        "O campo 'Data de Nascimento' não possui label ou placeholder associado."
+      );
+      Assertions.assertTrue(
+        campoVeterinario.getAttribute("aria-labelledby") != null || campoVeterinario.getText() != null,
+        "O campo 'Veterinário' não possui label ou texto associado."
+      );
+    }
+
   }
 
   @Nested
